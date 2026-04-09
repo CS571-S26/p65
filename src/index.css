@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap');
+
+:root {
+	--nord0: #2e3440;
+	--nord1: #3b4252;
+	--nord2: #434c5e;
+	--nord3: #4c566a;
+	--nord4: #d8dee9;
+	--nord5: #e5e9f0;
+	--nord6: #eceff4;
+	--nord8: #88c0d0;
+	--nord9: #81a1c1;
+	--nord10: #5e81ac;
+	--nord11: #bf616a;
+	--nord13: #ebcb8b;
+
+	--app-bg: #1f242d;
+	--text-primary: var(--nord4);
+	--text-muted-color: rgba(216, 222, 233, 0.72);
+	--link-color: var(--nord8);
+	--link-hover-color: #a3d3df;
+	--navbar-bg: rgba(46, 52, 64, 0.9);
+	--navbar-border: rgba(216, 222, 233, 0.12);
+	--brand-color: var(--nord6);
+	--nav-link-color: rgba(229, 233, 240, 0.82);
+	--nav-link-active: var(--nord8);
+	--surface-bg: #313845;
+	--surface-border: rgba(216, 222, 233, 0.1);
+	--surface-shadow: rgba(15, 19, 27, 0.22);
+	--card-title-color: rgba(236, 239, 244, 0.88);
+	--table-text: var(--nord4);
+	--table-border: rgba(216, 222, 233, 0.14);
+	--table-hover-bg: rgba(129, 161, 193, 0.14);
+	--table-hover-text: var(--nord6);
+	--table-head-border: rgba(216, 222, 233, 0.22);
+	--toggle-border: rgba(216, 222, 233, 0.3);
+	--toggle-text: var(--nord4);
+	--toggle-hover-bg: rgba(216, 222, 233, 0.12);
+}
+
+[data-theme='light'] {
+	--app-bg: #eceff4;
+	--text-primary: #2e3440;
+	--text-muted-color: rgba(46, 52, 64, 0.66);
+	--link-color: #4c739d;
+	--link-hover-color: #3f648c;
+	--navbar-bg: rgba(229, 233, 240, 0.95);
+	--navbar-border: rgba(46, 52, 64, 0.15);
+	--brand-color: #2e3440;
+	--nav-link-color: rgba(46, 52, 64, 0.84);
+	--nav-link-active: #3f648c;
+	--surface-bg: #e5e9f0;
+	--surface-border: rgba(46, 52, 64, 0.12);
+	--surface-shadow: rgba(60, 66, 80, 0.14);
+	--card-title-color: #2e3440;
+	--table-text: #2e3440;
+	--table-border: rgba(46, 52, 64, 0.16);
+	--table-hover-bg: rgba(94, 129, 172, 0.12);
+	--table-hover-text: #2e3440;
+	--table-head-border: rgba(46, 52, 64, 0.22);
+	--toggle-border: rgba(46, 52, 64, 0.32);
+	--toggle-text: #2e3440;
+	--toggle-hover-bg: rgba(46, 52, 64, 0.08);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: 'Manrope', 'Segoe UI', sans-serif;
+	color: var(--text-primary);
+	background: var(--app-bg);
+	line-height: 1.5;
+	letter-spacing: 0.01em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+	font-family: 'Sora', 'Manrope', sans-serif;
+	letter-spacing: 0.015em;
+}
+
+h1 {
+	font-style: italic;
+}
+
+a {
+	color: var(--link-color);
+}
+
+a:hover {
+	color: var(--link-hover-color);
+}
+
+.app-shell {
+	min-height: 100vh;
+}
+
+.app-content {
+	padding-bottom: 1rem;
+}
+
+.app-navbar {
+	background: var(--navbar-bg);
+	border-bottom: 1px solid var(--navbar-border);
+	backdrop-filter: blur(8px);
+}
+
+.app-navbar .navbar-brand {
+	color: var(--brand-color);
+	font-weight: 600;
+	font-size: 1.05rem;
+}
+
+.brand-logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	color: var(--brand-color);
+	font-style: italic;
+	font-size: 1.45rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	line-height: 1;
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.brand-logo:hover,
+.brand-logo:focus {
+	color: var(--nav-link-active);
+	transform: translateY(-1px);
+}
+
+.brand-logo-mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.65rem;
+	height: 1.65rem;
+	border: 1px solid var(--navbar-border);
+	border-radius: 999px;
+	font-style: normal;
+	font-size: 0.95rem;
+	color: var(--nav-link-active);
+	background: color-mix(in srgb, var(--navbar-bg) 88%, transparent);
+}
+
+.brand-logo-name {
+	font-family: 'Sora', 'Manrope', sans-serif;
+	font-style: italic;
+}
+
+.app-navbar .nav-link {
+	font-family: 'Sora', 'Manrope', sans-serif;
+	font-size: 0.95rem;
+	letter-spacing: 0.01em;
+	color: var(--nav-link-color);
+}
+
+.app-navbar .nav-link:hover,
+.app-navbar .nav-link:focus,
+.app-navbar .nav-link.active {
+	color: var(--nav-link-active);
+}
+
+.app-navbar-links .nav-link {
+	padding-left: 0.6rem;
+	padding-right: 0.6rem;
+}
+
+.card {
+	background: var(--surface-bg);
+	color: var(--text-primary);
+	border: 1px solid var(--surface-border);
+	box-shadow: 0 8px 20px var(--surface-shadow);
+	border-radius: 1rem;
+}
+
+.card-title {
+	color: var(--card-title-color);
+}
+
+.session-card {
+	transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.poker-card {
+	background: var(--surface-bg);
+	border: 1px solid var(--surface-border);
+	box-shadow: 0 8px 20px var(--surface-shadow);
+	border-radius: 1rem;
+	backdrop-filter: blur(4px);
+}
+
+.session-card:hover {
+	transform: translateY(-2px);
+	border-color: var(--nav-link-active);
+}
+
+.text-muted {
+	color: var(--text-muted-color) !important;
+}
+
+.table {
+	--bs-table-bg: transparent;
+	--bs-table-color: var(--table-text);
+	--bs-table-border-color: var(--table-border);
+	--bs-table-hover-bg: var(--table-hover-bg);
+	--bs-table-hover-color: var(--table-hover-text);
+}
+
+.table thead th {
+	color: var(--text-primary);
+	border-bottom-color: var(--table-head-border);
+}
+
+.theme-toggle-btn {
+	border-color: var(--toggle-border);
+	color: var(--toggle-text);
+	margin-left: 0.25rem;
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus,
+.theme-toggle-btn:active {
+	border-color: var(--nav-link-active);
+	color: var(--nav-link-active);
+	background-color: var(--toggle-hover-bg);
+}
+
+.dashboard-chart {
+	height: 260px;
+}
+
+@media (max-width: 767px) {
+	.theme-toggle-btn {
+		margin-left: 0;
+		margin-top: 0.35rem;
+		width: fit-content;
+	}
+}
+
+.btn-primary {
+	--bs-btn-bg: var(--nord10);
+	--bs-btn-border-color: var(--nord10);
+	--bs-btn-hover-bg: #6f8fb7;
+	--bs-btn-hover-border-color: #6f8fb7;
+	--bs-btn-active-bg: #4f6f96;
+	--bs-btn-active-border-color: #4f6f96;
+}
