@@ -1,10 +1,11 @@
 import '../App.css'
 import { Card, Container } from 'react-bootstrap'
+import TiltCard from '../components/TiltCard.jsx'
 
 export default function AboutPage() {
   return (
     <Container className="py-4">
-      <Card className="p-2">
+      <TiltCard className="p-2">
         <Card.Body>
           <h2 className="mb-3">About ChipStack</h2>
           <p>
@@ -17,7 +18,7 @@ export default function AboutPage() {
             light and dark mode keeps the app comfortable in any environment.
           </p>
         </Card.Body>
-      </Card>
+      </TiltCard>
     </Container>
   )
 }

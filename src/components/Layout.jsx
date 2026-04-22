@@ -10,6 +10,8 @@ export default function Layout() {
       <main className="app-content">
         <Outlet />
       </main>
+
+      <footer className="app-footer">Copyright Aron Szucs</footer>
     </div>
   )
 }

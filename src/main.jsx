@@ -5,11 +5,14 @@ import './index.css'
 import App from './App.jsx'
 import { HashRouter } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext.jsx'
+import { SessionsProvider } from './context/SessionsContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <ThemeProvider>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <SessionsProvider>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </SessionsProvider>
   </ThemeProvider>
 )

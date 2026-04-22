@@ -1,61 +1,28 @@
 import { useState } from 'react'
-import { Badge, Button, Card, Col, Form, Modal } from 'react-bootstrap'
+import { Button, Form, Modal } from 'react-bootstrap'
 import { useSessions } from '../context/SessionsContext.jsx'
-import TiltCard from './TiltCard.jsx'
 
-function formatCurrency(amount) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(amount)
+const initialFormState = {
+  date: '',
+  game: '',
+  hours: '',
+  buyIn: '',
+  buyOut: '',
+  isOnline: false,
+  location: ''
 }
 
-function formatSessionDate(value) {
-  const parsedDate = new Date(value)
-  if (Number.isNaN(parsedDate.getTime())) {
-    return value
-  }
-
-  return parsedDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  })
-}
-
-export default function SessionCard({ session }) {
-  const { updateSession, deleteSession } = useSessions()
-  const isProfit = session.result >= 0
-  const locationLabel = session.isOnline ? 'Platform' : 'Location'
+export default function AddSessionModal({ buttonLabel = 'Add Session', className = '' }) {
+  const { addSession } = useSessions()
   const [showModal, setShowModal] = useState(false)
+  const [formState, setFormState] = useState(initialFormState)
   const [isValidated, setIsValidated] = useState(false)
-  const [formState, setFormState] = useState({
-    date: session.date,
-    game: session.game,
-    hours: String(session.hours),
-    buyIn: String(session.buyIn ?? 0),
-    buyOut: String(session.buyOut ?? 0),
-    isOnline: Boolean(session.isOnline),
-    location: session.location
-  })
 
-  const handleShow = () => {
-    setFormState({
-      date: session.date,
-      game: session.game,
-      hours: String(session.hours),
-      buyIn: String(session.buyIn ?? 0),
-      buyOut: String(session.buyOut ?? 0),
-      isOnline: Boolean(session.isOnline),
-      location: session.location
-    })
-    setShowModal(true)
-    setIsValidated(false)
-  }
+  const handleShow = () => setShowModal(true)
 
   const handleClose = () => {
     setShowModal(false)
+    setFormState(initialFormState)
     setIsValidated(false)
   }
 
@@ -76,53 +43,24 @@ export default function SessionCard({ session }) {
       return
     }
 
-    updateSession(session.id, formState)
+    addSession(formState)
     handleClose()
   }
 
   return (
-    <Col xs={12} md={6} lg={4}>
-      <TiltCard className="h-100 session-card poker-card">
-        <Card.Body>
-          <div className="d-flex justify-content-between align-items-start mb-2">
-            <Card.Title className="mb-0">{session.game}</Card.Title>
-            <Badge bg={isProfit ? 'success' : 'danger'}>
-              {isProfit ? '+' : ''}
-              {formatCurrency(session.result)}
-            </Badge>
-          </div>
-
-          <p className="text-muted mb-2">{formatSessionDate(session.date)}</p>
-          <p className="mb-1"><strong>Hours:</strong> {session.hours}</p>
-          <p className="mb-1"><strong>Type:</strong> {session.isOnline ? 'Online' : 'In Person'}</p>
-          <p className="mb-1"><strong>Buy In:</strong> {formatCurrency(session.buyIn ?? 0)}</p>
-          <p className="mb-1"><strong>Buy Out:</strong> {formatCurrency(session.buyOut ?? 0)}</p>
-          <p className="mb-0"><strong>{locationLabel}:</strong> {session.location}</p>
-
-          <div className="mt-3 d-flex justify-content-end gap-2">
-            <Button variant="outline-secondary" size="sm" type="button" onClick={handleShow}>
-              Edit Session
-            </Button>
-            <Button
-              variant="outline-danger"
-              size="sm"
-              type="button"
-              onClick={() => deleteSession(session.id)}
-            >
-              Delete
-            </Button>
-          </div>
-        </Card.Body>
-      </TiltCard>
+    <>
+      <Button variant="primary" className={className} type="button" onClick={handleShow}>
+        {buttonLabel}
+      </Button>
 
       <Modal show={showModal} onHide={handleClose} centered>
         <Form noValidate validated={isValidated} onSubmit={handleSubmit}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Poker Session</Modal.Title>
+            <Modal.Title>Add Poker Session</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            <Form.Group className="mb-3" controlId={`editSessionDate-${session.id}`}>
+            <Form.Group className="mb-3" controlId="sessionDate">
               <Form.Label>Date</Form.Label>
               <Form.Control
                 required
@@ -136,12 +74,13 @@ export default function SessionCard({ session }) {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId={`editSessionGame-${session.id}`}>
+            <Form.Group className="mb-3" controlId="sessionGame">
               <Form.Label>Game</Form.Label>
               <Form.Control
                 required
                 type="text"
                 name="game"
+                placeholder="1/2 NLH Cash"
                 value={formState.game}
                 onChange={handleChange}
               />
@@ -150,7 +89,7 @@ export default function SessionCard({ session }) {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId={`editSessionHours-${session.id}`}>
+            <Form.Group className="mb-3" controlId="sessionHours">
               <Form.Label>Hours Played</Form.Label>
               <Form.Control
                 required
@@ -158,6 +97,7 @@ export default function SessionCard({ session }) {
                 step="0.25"
                 type="number"
                 name="hours"
+                placeholder="4.0"
                 value={formState.hours}
                 onChange={handleChange}
               />
@@ -166,7 +106,7 @@ export default function SessionCard({ session }) {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId={`editSessionBuyIn-${session.id}`}>
+            <Form.Group className="mb-3" controlId="sessionBuyIn">
               <Form.Label>Buy In ($)</Form.Label>
               <Form.Control
                 required
@@ -174,6 +114,7 @@ export default function SessionCard({ session }) {
                 step="1"
                 type="number"
                 name="buyIn"
+                placeholder="300"
                 value={formState.buyIn}
                 onChange={handleChange}
               />
@@ -182,7 +123,7 @@ export default function SessionCard({ session }) {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId={`editSessionBuyOut-${session.id}`}>
+            <Form.Group className="mb-3" controlId="sessionBuyOut">
               <Form.Label>Buy Out ($)</Form.Label>
               <Form.Control
                 required
@@ -190,6 +131,7 @@ export default function SessionCard({ session }) {
                 step="1"
                 type="number"
                 name="buyOut"
+                placeholder="450"
                 value={formState.buyOut}
                 onChange={handleChange}
               />
@@ -198,7 +140,7 @@ export default function SessionCard({ session }) {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId={`editSessionType-${session.id}`}>
+            <Form.Group className="mb-3" controlId="sessionType">
               <Form.Check
                 type="switch"
                 name="isOnline"
@@ -208,12 +150,13 @@ export default function SessionCard({ session }) {
               />
             </Form.Group>
 
-            <Form.Group controlId={`editSessionLocation-${session.id}`}>
+            <Form.Group controlId="sessionLocation">
               <Form.Label>{formState.isOnline ? 'Platform' : 'Location'}</Form.Label>
               <Form.Control
                 required
                 type="text"
                 name="location"
+                placeholder={formState.isOnline ? 'Ignition, ACR, PokerStars...' : 'Casino name'}
                 value={formState.location}
                 onChange={handleChange}
               />
@@ -228,11 +171,11 @@ export default function SessionCard({ session }) {
               Cancel
             </Button>
             <Button variant="primary" type="submit">
-              Save Changes
+              Save Session
             </Button>
           </Modal.Footer>
         </Form>
       </Modal>
-    </Col>
+    </>
   )
 }
