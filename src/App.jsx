@@ -1,7 +1,9 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage.jsx'
+import StatisticsPage from './pages/StatisticsPage.jsx'
 import SessionsPage from './pages/SessionsPage.jsx'
+import NotesPage from './pages/NotesPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import Layout from './components/Layout.jsx'
@@ -11,7 +13,9 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path="statistics" element={<StatisticsPage />} />
         <Route path="sessions" element={<SessionsPage />} />
+        <Route path="notes" element={<NotesPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

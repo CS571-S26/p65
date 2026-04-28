@@ -11,13 +11,20 @@ export default function NavBar() {
       <Container>
         <Navbar.Brand as={BrandLogo} />
         <Navbar.Toggle aria-controls="main-navbar" />
-          <Navbar.Collapse id="main-navbar">
-            <Nav className="ms-auto align-items-md-center gap-1 gap-md-2 app-navbar-links">
+        <Navbar.Collapse id="main-navbar">
+          <Nav className="ms-auto align-items-md-center gap-1 gap-md-2 app-navbar-links">
             <Nav.Link as={NavLink} to="/" end>
               Home
             </Nav.Link>
+            <Nav.Link as={NavLink} to="/statistics">
+              Statistics
+            </Nav.Link>
             <Nav.Link as={NavLink} to="/sessions">
               Sessions
+            </Nav.Link>
+
+            <Nav.Link as={NavLink} to="/notes">
+              Notes
             </Nav.Link>
 
             <Nav.Link as={NavLink} to="/about">
@@ -26,7 +33,7 @@ export default function NavBar() {
             <Button
               variant="outline-secondary"
               size="sm"
-                className="theme-toggle-btn"
+              className="theme-toggle-btn"
               onClick={toggleTheme}
               aria-label="Toggle light and dark mode"
             >

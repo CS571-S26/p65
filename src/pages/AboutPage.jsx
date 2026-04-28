@@ -13,10 +13,9 @@ export default function AboutPage() {
             results in one place.
           </p>
           <p className="mb-0">
-            The dashboard gives you a quick read on profit, volume, and averages, while the
-            sessions page keeps every session organized in a simple card layout. A built-in
-            light and dark mode keeps the app comfortable in any environment.
+            Track sessions, bankroll, and performance with a clean, focused interface.
           </p>
+          <p>Made by Aron Szucs</p>
         </Card.Body>
       </TiltCard>
     </Container>

@@ -43,8 +43,8 @@ export default function HomePage() {
 
   return (
     <Container className="py-4">
-      <h1 className="mb-2">Dashboard</h1>
-      <p className="text-muted mb-4">Track results, volume, and streaks across poker sessions.</p>
+      <h1 className="page-title page-title-dashboard mb-2">Dashboard</h1>
+      <p className="text-muted mb-4">Quick info at a glance</p>
 
       <Row className="g-3">
         <Col xs={12} md={6} lg={4}>

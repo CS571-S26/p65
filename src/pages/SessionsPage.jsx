@@ -10,10 +10,10 @@ export default function SessionsPage() {
   return (
     <Container className="py-4">
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-2">
-        <h1 className="mb-0">Sessions</h1>
+        <h1 className="page-title page-title-sessions mb-0">Sessions</h1>
         <AddSessionModal className="px-4" />
       </div>
-      <p className="text-muted mb-4">Your recent poker sessions will appear here.</p>
+      <p className="text-muted mb-4">Your recent poker sessions will appear here</p>
 
       {sessions.length > 0 ? (
         <Row className="g-3">
