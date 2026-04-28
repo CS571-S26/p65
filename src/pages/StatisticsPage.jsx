@@ -216,7 +216,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Chance of Being Profitable</Card.Title>
-              <h3 className="mb-2">{formatPercent(analysis.profitabilityChance)}</h3>
+              <h2 className="mb-2">{formatPercent(analysis.profitabilityChance)}</h2>
               <ProgressBar
                 now={analysis.profitabilityChance}
                 variant={analysis.profitabilityChance >= 50 ? 'success' : 'warning'}
@@ -233,7 +233,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Average Winning Session</Card.Title>
-              <h3 className="mb-2 text-success">{formatCurrency(analysis.averageWin)}</h3>
+              <h2 className="mb-2 text-success">{formatCurrency(analysis.averageWin)}</h2>
               <p className="text-muted mb-0">Average result across sessions that ended in profit.</p>
             </Card.Body>
           </TiltCard>
@@ -243,7 +243,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Average Losing Session</Card.Title>
-              <h3 className="mb-2 text-danger">{formatCurrency(analysis.averageLoss)}</h3>
+              <h2 className="mb-2 text-danger">{formatCurrency(analysis.averageLoss)}</h2>
               <p className="text-muted mb-0">Average drawdown across sessions that finished below zero.</p>
             </Card.Body>
           </TiltCard>
@@ -253,7 +253,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Median Session Result</Card.Title>
-              <h3 className="mb-2">{formatCurrency(analysis.medianResult)}</h3>
+              <h2 className="mb-2">{formatCurrency(analysis.medianResult)}</h2>
               <p className="text-muted mb-0">A quick look at the middle result in your sample.</p>
             </Card.Body>
           </TiltCard>
@@ -263,7 +263,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Volatility</Card.Title>
-              <h3 className="mb-2">{formatCurrency(analysis.volatility)}</h3>
+              <h2 className="mb-2">{formatCurrency(analysis.volatility)}</h2>
               <p className="text-muted mb-0">Standard deviation of session results. Higher means wilder swings.</p>
             </Card.Body>
           </TiltCard>
@@ -273,7 +273,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Break-even Sessions</Card.Title>
-              <h3 className="mb-2">{analysis.breakevenSessions}</h3>
+              <h2 className="mb-2">{analysis.breakevenSessions}</h2>
               <p className="text-muted mb-0">Sessions that landed exactly on zero profit.</p>
             </Card.Body>
           </TiltCard>
@@ -285,7 +285,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Longest Win Streak</Card.Title>
-              <h4 className="mb-0 text-success">{analysis.longestWinStreak}</h4>
+              <h3 className="mb-0 text-success">{analysis.longestWinStreak}</h3>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -294,7 +294,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Longest Loss Streak</Card.Title>
-              <h4 className="mb-0 text-danger">{analysis.longestLossStreak}</h4>
+              <h3 className="mb-0 text-danger">{analysis.longestLossStreak}</h3>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -303,7 +303,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Best Game</Card.Title>
-              <h4 className="mb-1">{analysis.bestGame ? analysis.bestGame.game : 'N/A'}</h4>
+              <h3 className="mb-1">{analysis.bestGame ? analysis.bestGame.game : 'N/A'}</h3>
               <Badge bg="secondary" className="fw-normal">
                 {analysis.bestGame ? formatCurrency(analysis.bestGame.totalProfit) : '$0'} total
               </Badge>
@@ -315,7 +315,7 @@ export default function StatisticsPage() {
           <TiltCard className="poker-card dashboard-stat-card h-100">
             <Card.Body>
               <Card.Title>Best Day</Card.Title>
-              <h4 className="mb-1">{analysis.bestDay ? analysis.bestDay.day : 'N/A'}</h4>
+              <h3 className="mb-1">{analysis.bestDay ? analysis.bestDay.day : 'N/A'}</h3>
               <Badge bg="secondary" className="fw-normal">
                 {analysis.bestDay ? formatCurrency(analysis.bestDay.averageProfit) : '$0'} average
               </Badge>

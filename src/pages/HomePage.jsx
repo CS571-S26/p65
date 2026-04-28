@@ -51,7 +51,7 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Total Profit</Card.Title>
-              <h3 className="mb-0">{formatCurrency(stats.totalProfit)}</h3>
+              <h2 className="mb-0">{formatCurrency(stats.totalProfit)}</h2>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -59,7 +59,7 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Sessions Played</Card.Title>
-              <h3 className="mb-0">{stats.sessionsPlayed}</h3>
+              <h2 className="mb-0">{stats.sessionsPlayed}</h2>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -67,7 +67,7 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Average / Session</Card.Title>
-              <h3 className="mb-0">{formatCurrency(stats.averagePerSession)}</h3>
+              <h2 className="mb-0">{formatCurrency(stats.averagePerSession)}</h2>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -78,7 +78,7 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Hourly Rate</Card.Title>
-              <h4 className="mb-0">{formatCurrency(stats.hourlyRate)}</h4>
+              <h3 className="mb-0">{formatCurrency(stats.hourlyRate)}</h3>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -86,9 +86,9 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>BB/100</Card.Title>
-              <h4 className="mb-0">
+              <h3 className="mb-0">
                 {stats.bbPer100 === null ? 'N/A' : formatDecimal(stats.bbPer100)}
-              </h4>
+              </h3>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -96,7 +96,7 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Total Hours Played</Card.Title>
-              <h4 className="mb-0">{formatDecimal(stats.totalHours)}</h4>
+              <h3 className="mb-0">{formatDecimal(stats.totalHours)}</h3>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -104,7 +104,7 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Average Session Length</Card.Title>
-              <h4 className="mb-0">{formatDecimal(stats.averageSessionLength)} hrs</h4>
+              <h3 className="mb-0">{formatDecimal(stats.averageSessionLength)} hrs</h3>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -112,7 +112,7 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Average Buy In</Card.Title>
-              <h4 className="mb-0">{formatCurrency(stats.averageBuyIn)}</h4>
+              <h3 className="mb-0">{formatCurrency(stats.averageBuyIn)}</h3>
             </Card.Body>
           </TiltCard>
         </Col>
@@ -120,9 +120,9 @@ export default function HomePage() {
           <TiltCard className="poker-card dashboard-stat-card">
             <Card.Body>
               <Card.Title>Biggest Win / Biggest Loss</Card.Title>
-              <h4 className="mb-0">
+              <h3 className="mb-0">
                 {formatCurrency(stats.biggestWin)} / {formatCurrency(stats.biggestLoss)}
-              </h4>
+              </h3>
             </Card.Body>
           </TiltCard>
         </Col>

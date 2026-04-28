@@ -7,7 +7,7 @@ export default function AboutPage() {
     <Container className="py-4">
       <TiltCard className="p-2">
         <Card.Body>
-          <h2 className="mb-3">About ChipStack</h2>
+          <h1 className="mb-3">About ChipStack</h1>
           <p>
             ChipStack is a simple poker ledger for tracking cash games, tournaments, and overall
             results in one place.
